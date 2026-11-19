@@ -73,8 +73,10 @@ section{padding:112px 0}
 
 /* Brands marquee */
 .brands{padding:36px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
-.track{display:flex;gap:72px;width:max-content;animation:slide 32s linear infinite}
-.track span{font-family:var(--display);font-weight:700;font-size:clamp(1.3rem,2.4vw,1.9rem);letter-spacing:-.02em;color:var(--muted);white-space:nowrap}
+.track{display:flex;gap:20px;width:max-content;animation:slide 40s linear infinite}
+.brands:hover .track{animation-play-state:paused}
+.logo{flex:none;display:grid;place-items:center;height:96px;padding:14px 26px;background:#fff;border-radius:var(--r)}
+.logo img{height:68px;width:auto;max-width:210px;object-fit:contain}
 @keyframes slide{to{transform:translateX(-50%)}}
 
 /* Showreel */
@@ -101,6 +103,9 @@ section{padding:112px 0}
 .about .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:center}
 .about img{aspect-ratio:4/5;object-fit:cover;width:100%;border-radius:var(--r)}
 .about p{color:var(--muted);max-width:60ch;margin-top:18px}
+.words{margin:26px 0 0;padding-left:22px;border-left:3px solid var(--accent)}
+.words p{color:var(--text);margin-top:0}
+.words p + p{margin-top:12px}
 .facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:8px 48px;margin-top:30px}
 .facts dt{color:var(--muted);font-size:.85rem}
 .facts dd{font-weight:700;margin:0}
@@ -199,7 +204,7 @@ dialog::backdrop{background:rgba(8,9,10,.86);backdrop-filter:blur(6px)}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .track{animation:none;flex-wrap:wrap;width:auto;gap:16px 48px;padding:0 28px}
-  .track span[aria-hidden]{display:none}
+  .track [aria-hidden]{display:none}
   *{transition:none!important}
 }
 
@@ -221,6 +226,9 @@ dialog::backdrop{background:rgba(8,9,10,.86);backdrop-filter:blur(6px)}
   .num:nth-child(n+3){border-top:1px solid var(--line)}
   .about img{aspect-ratio:1/1;object-position:50% 42%}
   .facts{grid-template-columns:1fr 1fr;gap:16px 32px}
+  .facts div:last-child{grid-column:1/-1}
+  .logo{height:76px;padding:10px 18px}
+  .logo img{height:54px;max-width:170px}
   .xp-row{grid-template-columns:1fr auto;gap:6px 16px}
   .xp-row .role{grid-column:1;grid-row:2}
   .xp-row .what{grid-column:1;grid-row:3;margin-top:0}
@@ -257,7 +265,7 @@ dialog::backdrop{background:rgba(8,9,10,.86);backdrop-filter:blur(6px)}
           <span class="line" aria-hidden="true"><span style="--l:0">Malshi</span></span>
           <span class="line" aria-hidden="true"><span style="--l:1">Edirirathne</span></span>
         </h1>
-        <p class="lede reveal" style="--i:4">The face and voice of your next campaign.</p>
+        <p class="lede reveal" style="--i:4">A presenter who turns scripts into conversations people want to stay for.</p>
         <div class="hero-cta reveal" style="--i:5">
           <a class="btn btn-primary" href="#contact">Book Malshi <i class="ph-bold ph-arrow-right"></i></a>
           <a class="btn btn-ghost" href="#showreel"><i class="ph-bold ph-play"></i> Watch the showreel</a>
@@ -270,10 +278,7 @@ dialog::backdrop{background:rgba(8,9,10,.86);backdrop-filter:blur(6px)}
   </section>
 
   <div class="brands" aria-label="Brands Malshi has worked with">
-    <div class="track">
-      <span>NCG Holdings</span><span>Lumen Optical</span><span>Nexteye Solutions</span><span>Kalathea Villa Hikkaduwa</span><span>NCG Automotive</span>
-      <span aria-hidden="true">NCG Holdings</span><span aria-hidden="true">Lumen Optical</span><span aria-hidden="true">Nexteye Solutions</span><span aria-hidden="true">Kalathea Villa Hikkaduwa</span><span aria-hidden="true">NCG Automotive</span>
-    </div>
+    <div class="track" id="logos"></div>
   </div>
 
   <section id="showreel">
@@ -302,7 +307,7 @@ dialog::backdrop{background:rgba(8,9,10,.86);backdrop-filter:blur(6px)}
       <div class="num reveal"><b>289K</b><span>views on one villa reel she voiced</span></div>
       <div class="num reveal" style="--i:1"><b>71K</b><span>views on the NCG Automotive film</span></div>
       <div class="num reveal" style="--i:2"><b>11</b><span>published pieces in this portfolio</span></div>
-      <div class="num reveal" style="--i:3"><b>4</b><span>brands across three platforms</span></div>
+      <div class="num reveal" style="--i:3"><b>9</b><span>brands she has worked with</span></div>
     </div></div>
   </section>
 
@@ -311,12 +316,15 @@ dialog::backdrop{background:rgba(8,9,10,.86);backdrop-filter:blur(6px)}
       <img class="reveal" src="assets/fb-1096515406304092.jpg" width="675" height="1200" loading="lazy" alt="Malshi on location outside Lumen Optical in Karapitiya">
       <div>
         <h2 class="reveal">Comfortable in front of a lens, clear behind a mic.</h2>
-        <p class="reveal" style="--i:1">Malshi Edirirathne is a presenter, model and voice artist from Sri Lanka. She works with NCG Holdings, where she fronts the group's service films, and she has presented and modeled for Lumen Optical, voiced the Kalathea Villa Hikkaduwa promo, and worked on shoots with the digital agency Nexteye Solutions.</p>
-        <p class="reveal" style="--i:2">Her work runs from a Sinhala-language film for a bus and lorry workshop to eyewear reels and a couple shoot at Galle Fort. On camera she is warm and unhurried, and she delivers a script so it sounds like conversation. Behind the mic she keeps the same clarity. Brands book her because viewers stay and watch.</p>
+        <p class="reveal" style="--i:1">Malshi Edirirathne is a presenter, model and voice artist from Sri Lanka. She has presented and modeled for NCG Holdings, NCG Automotive and Lumen Optical, voiced the Kalathea Villa Hikkaduwa promo, and worked on shoots with the digital agency Nexteye Solutions.</p>
+        <blockquote class="words reveal" style="--i:2">
+          <p>“I'm a presenter who believes a good stage has room for everyone in the audience. Whether I'm hosting a corporate event, moderating a panel or fronting a broadcast, my job is to keep things clear, warm and on time.</p>
+          <p>I prepare thoroughly, listen closely and adapt when a plan changes mid-show. Organisers get a calm host. Audiences get a programme that feels easy to follow.”</p>
+        </blockquote>
         <dl class="facts reveal" style="--i:3">
           <div><dt>Based in</dt><dd>Sri Lanka</dd></div>
-          <div><dt>Language</dt><dd>Sinhala</dd></div>
-          <div><dt>Formats</dt><dd>Reels, TikTok, YouTube</dd></div>
+          <div><dt>Languages</dt><dd>Sinhala, English</dd></div>
+          <div><dt>Platforms</dt><dd>Reels, TikTok, YouTube,<br>Facebook, Instagram, LinkedIn</dd></div>
         </dl>
       </div>
     </div>
@@ -329,7 +337,7 @@ dialog::backdrop{background:rgba(8,9,10,.86);backdrop-filter:blur(6px)}
         <button class="xp-row reveal" data-open="ncg-auto"><h3>NCG Holdings</h3><span class="role">Presenter</span><span class="what">Service films for NCG Automotive on Facebook and YouTube. 71K views.</span><span class="go" aria-hidden="true"><i class="ph-bold ph-play"></i></span></button>
         <button class="xp-row reveal" data-open="lumen-face"><h3>Lumen Optical</h3><span class="role">Presenter and model</span><span class="what">Four eyewear reels shot in store in Karapitiya.</span><span class="go" aria-hidden="true"><i class="ph-bold ph-play"></i></span></button>
         <button class="xp-row reveal" data-open="kalathea"><h3>Kalathea Villa Hikkaduwa</h3><span class="role">Voice-over</span><span class="what">Promo reel with 289K views and 3.6K reactions.</span><span class="go" aria-hidden="true"><i class="ph-bold ph-play"></i></span></button>
-        <button class="xp-row reveal" data-open="galle-fort"><h3>Nexteye Solutions</h3><span class="role">On-camera talent</span><span class="what">Agency shoots, including a couple set at Galle Fort.</span><span class="go" aria-hidden="true"><i class="ph-bold ph-play"></i></span></button>
+        <button class="xp-row reveal" data-open="galle-fort"><h3>Nexteye Solutions</h3><span class="role">On-camera talent</span><span class="what">Agency shoots, including a shoot at Galle Fort.</span><span class="go" aria-hidden="true"><i class="ph-bold ph-play"></i></span></button>
       </div>
     </div>
   </section>
@@ -347,7 +355,7 @@ dialog::backdrop{background:rgba(8,9,10,.86);backdrop-filter:blur(6px)}
     <div class="wrap">
       <h2 class="reveal">Skills</h2>
       <ul class="skill-list reveal" style="--i:1">
-        <li>On-camera presenting</li><li>Voice-over</li><li>Modeling</li><li>Sinhala hosting</li><li>Script delivery</li><li>Product explainers</li><li>Short-form reels</li><li>On-location shoots</li>
+        <li>On-camera presenting</li><li>Live event hosting</li><li>Interviewing</li><li>Product launch livestreams</li><li>Customer testimonials</li><li>Scriptwriting</li><li>Voice-over</li><li>Modeling</li><li>Sinhala and English hosting</li><li>Short-form reels</li>
       </ul>
     </div>
   </section>
@@ -433,7 +441,7 @@ const WORK = [
   {id:"lumen-face", type:"presenting", shape:"tall", src:"fb", vid:"1977086146294313", img:"fb-1977086146294313.jpg", title:"Not every frame fits every face", client:"Lumen Optical", alt:"Malshi presenting frames at the Lumen Optical counter"},
   {id:"ncg-auto", type:"presenting", shape:"wide", src:"fb", vid:"1046837588174719", img:"fb-1046837588174719.jpg", title:"NCG Automotive service film", client:"NCG Holdings, 71K views", alt:"Malshi presenting in front of the NCG Automotive workshop"},
   {id:"kalathea", type:"voice", shape:"tall", src:"fb", vid:"2137648393538607", img:"fb-2137648393538607.jpg", title:"Kalathea Villa Hikkaduwa promo", client:"Voice-over, 289K views", alt:"Pool breakfast scene from the Kalathea Villa promo"},
-  {id:"galle-fort", type:"modeling", shape:"tall", src:"fb", vid:"2111447296213209", img:"fb-2111447296213209.jpg", title:"Galle Fort couple shoot", client:"Nexteye Solutions Studio", alt:"Malshi in a red dress during a photo shoot at Galle Fort"},
+  {id:"galle-fort", type:"modeling", shape:"tall", src:"fb", vid:"2111447296213209", img:"fb-2111447296213209.jpg", title:"Galle Fort shoot", client:"Nexteye Solutions Studio", alt:"Malshi in a red dress during a photo shoot at Galle Fort"},
   {id:"lumen-next", type:"presenting", shape:"tall", src:"fb", vid:"1096515406304092", img:"fb-1096515406304092.jpg", title:"Your next favourite frame", client:"Lumen Optical", alt:"Malshi presenting outside the Lumen Optical store"},
   {id:"ncg-yt", type:"presenting", shape:"wide", src:"yt", vid:"nF4SW7kW03M", img:"yt-ncg.jpg", title:"NCG Holdings on YouTube", client:"NCG Holdings", alt:"Malshi presenting on location for NCG Holdings"},
   {id:"lumen-style", type:"modeling", shape:"tall", src:"fb", vid:"2304011200172552", img:"fb-2304011200172552.jpg", title:"Style is in the details", client:"Lumen Optical", alt:"Malshi wearing sunglasses at a cafe table"},
@@ -451,6 +459,10 @@ const SRC = {
   tt:{name:"TikTok", page:v=>`https://www.tiktok.com/@nexteye.solutions/video/${v}`, embed:v=>`https://www.tiktok.com/player/v1/${v}?autoplay=1&music_info=1&description=1`}
 };
 const $ = s => document.querySelector(s);
+
+// Brand logo strip (listed twice so the marquee loops seamlessly)
+const LOGOS = [["ncg-holdings","NCG Holdings"],["ncg-automotive","NCG Automotive"],["lumen-opticals","Lumen Opticals"],["kalathea","Kalathea Hikkaduwa"],["nexteye-solutions","Nexteye Solutions"],["dilan-property","Dilan Property Solutions"],["prime-home","Prime Home Solutions"],["unic-lkay","Unic Lkay"]];
+$("#logos").innerHTML = [0,1].map(n => LOGOS.map(([f,name]) => `<span class="logo"${n ? ' aria-hidden="true"' : ""}><img src="assets/logos/${f}.png" alt="${n ? "" : name}"></span>`).join("")).join("");
 const iframe = w => `<iframe src="${SRC[w.src].embed(w.vid)}" title="${w.title}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen; web-share" allowfullscreen></iframe>`;
 
 // Grid
